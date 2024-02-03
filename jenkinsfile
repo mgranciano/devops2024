@@ -1,9 +1,10 @@
 node {
-    def contenedortest = docker.image('node:15.6')
+    def gitcommit
 
     stage('Verificación SCM') {
         checkout scm
         sh "git rev-parse --short HEAD > .git/commit-id"                        
         gitcommit = readFile('.git/commit-id').trim()
     }
+
 }
